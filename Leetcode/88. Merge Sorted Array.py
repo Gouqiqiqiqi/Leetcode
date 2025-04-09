@@ -69,6 +69,8 @@ Without ->, the function still works, but using it makes your code easier to und
 class Solution:
     def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:
         # Start from the end of both arrays
+        nums1[:m] = sorted(nums1[:m]) # Sort the first m elements of nums1, this ensures that I will only merge the 0s in nums1 with nums2
+        nums2 = sorted(nums2)
         p1 = m - 1  # last index of initial nums1
         p2 = n - 1  # last index of nums2
         p = m + n - 1  # last index of nums1
@@ -90,9 +92,9 @@ class Solution:
             p -= 1
 
 sol = Solution()
-nums1 = [1, 2, 3, 0, 0, 0]
+nums1 = [3,6,3,0,0,0]  # nums1 has enough space for nums2
 m = 3
 nums2 = [2, 5, 6]
 n = 3
 sol.merge(nums1, m, nums2, n)
-print(nums1)  # Output: [1, 2, 2, 3, 5, 6]
+print(nums1) 
