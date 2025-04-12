@@ -68,7 +68,7 @@ Without ->, the function still works, but using it makes your code easier to und
 class Solution:
     def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:
         # Combine the valid elements from nums1 with the elements from nums2.
-        nums1[:m+n] = nums1[:m] + nums2[:n]
+        nums1 = nums1 + nums2
         # Sort the combined list in place.
         nums1.sort()
 
