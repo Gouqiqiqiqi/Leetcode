@@ -7,6 +7,7 @@ The final sorted array should not be returned by the function, but instead be st
 To accommodate this, nums1 has a length of m + n, 
 where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
 
+------------------------------------------------------------------------------------------------
 
 Notes:
 Class is a blueprint for creating objects.
@@ -27,7 +28,7 @@ Car is a class that represents a car.
 # It has three attributes: make, model, and year.
 car1 and car2 are objects (instances) of the Car class.
 
-
+------------------------------------------------------------------------------------------------
 
 Type hinting is a feature in Python that allows you to specify the expected data types of function arguments and return values.
 It helps improve code readability and can assist with static type checking.
@@ -43,6 +44,7 @@ def merge(self, nums1: list[int], m: int, nums2: list[int], n: int):
 is equivalent to:
 def merge(self, nums1, m, nums2, n):
 
+-----------------------------------------------------------------------------------------------
 -> None
 
 what is -> + xxx i.e -> None or -> int or -> str etc.
@@ -59,7 +61,6 @@ a and b are both integers (int)
 The function returns an integer (-> int)
 
 Without ->, the function still works, but using it makes your code easier to understand and helps tools like linters or IDEs catch bugs early.
-
 '''
 
 
@@ -67,31 +68,13 @@ Without ->, the function still works, but using it makes your code easier to und
 
 class Solution:
     def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:
-        # Start from the end of both arrays
-        nums1[:m] = sorted(nums1[:m]) # Sort the first m elements of nums1, this ensures that I will only merge the 0s in nums1 with nums2
-        nums2 = sorted(nums2)
-        p1 = m - 1  # last index of initial nums1
-        p2 = n - 1  # last index of nums2
-        p = m + n - 1  # last index of nums1
-
-        # Merge in reverse
-        while p1 >= 0 and p2 >= 0:
-            if nums1[p1] > nums2[p2]:
-                nums1[p] = nums1[p1]
-                p1 -= 1
-            else:
-                nums1[p] = nums2[p2]
-                p2 -= 1
-            p -= 1
-
-        # Fill in the rest of nums2 (if any left)
-        while p2 >= 0:
-            nums1[p] = nums2[p2]
-            p2 -= 1
-            p -= 1
-
+        # Combine the valid elements from nums1 with the elements from nums2.
+        nums1[:m+n] = nums1[:m] + nums2[:n]
+        # Sort the combined list in place.
+        nums1.sort()
+        
 sol = Solution()
-nums1 = [3,6,3,0,0,0]  # nums1 has enough space for nums2
+nums1 = [0, 2, 0, 3, 0, 6]  # nums1 has enough space for nums2
 m = 3
 nums2 = [2, 5, 6]
 n = 3
