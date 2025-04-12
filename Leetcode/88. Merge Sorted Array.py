@@ -63,7 +63,6 @@ The function returns an integer (-> int)
 Without ->, the function still works, but using it makes your code easier to understand and helps tools like linters or IDEs catch bugs early.
 '''
 
-
 #Solution:
 
 class Solution:
@@ -72,7 +71,7 @@ class Solution:
         nums1[:m+n] = nums1[:m] + nums2[:n]
         # Sort the combined list in place.
         nums1.sort()
-        
+
 sol = Solution()
 nums1 = [0, 2, 0, 3, 0, 6]  # nums1 has enough space for nums2
 m = 3
