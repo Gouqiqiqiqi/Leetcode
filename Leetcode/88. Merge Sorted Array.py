@@ -67,15 +67,82 @@ Without ->, the function still works, but using it makes your code easier to und
 
 class Solution:
     def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:
-        # Combine the valid elements from nums1 with the elements from nums2.
-        nums1 = nums1 + nums2
-        # Sort the combined list in place.
+        # Filter out non-zeroq elements (meaningful data from nums1)
+        nums1[:m+n] = nums1[:m] + nums2[:n]
         nums1.sort()
 
+# Test it
 sol = Solution()
-nums1 = [0, 2, 0, 3, 0, 6]  # nums1 has enough space for nums2
+nums1 = [1, 2, 3, 0, 0, 0]
 m = 3
 nums2 = [2, 5, 6]
 n = 3
 sol.merge(nums1, m, nums2, n)
 print(nums1) 
+
+'''
+This Question can have multiple variations depending on the request.
+
+Question type 1:
+Merge first m elements of nums1 with first n elements of nums2 and sort them in non-decreasing order.
+Solution:
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+    
+        nums1[:m+n] = nums1[:m] + nums2[:n]
+        nums1.sort()
+
+Question type 2:
+Replace 0s in nums1 with the elements of nums2, provided nums1 has enough space to accommodate them. 
+i.e. nums1 has a length of m + n, and has the same number of 0s as the number of elements (n) in nums2.
+
+class Solution:
+    def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:
+        # Filter out non-zero elements (meaningful data from nums1)
+        nums1_clean = [x for x in nums1 if x != 0]
+        merged = nums1_clean + nums2
+        merged.sort()
+        nums1[:] = merged
+
+# Test it
+sol = Solution()
+nums1 = [0, 2, 0, 3, 0, 6]
+m = 3
+nums2 = [2, 5, 6]
+n = 3
+sol.merge(nums1, m, nums2, n)
+print(nums1)  # ➜ [2, 2, 3, 5, 6, 6]
+
+
+Question type 3:
+Insert nums2 into nums1
+
+class Solution:
+    def merge(self, nums1: list[int], nums2: list[int]) -> None:
+        nums1 += nums2
+        nums1.sort()
+# Test it
+sol = Solution()
+nums1 = [0, 2, 0, 3, 0, 6]
+nums2 = [2, 5, 6]
+sol.merge(nums1, nums2)
+print(nums1)
+
+Question type 4:
+Insert n elements from nums2 into nums1 which has m elements, at the start, middle or end of nums1.
+
+class Solution:
+    def merge(self, nums1: list[int], nums2: list[int], index:int) -> None:
+        nums1[index:index] = nums2 
+        #when index = 0, insert at the start of nums1
+        #when index = len(nums1), insert at the end of nums1
+        #when index = len(nums1)//2, insert at the middle of nums1
+        nums1.sort()
+# Test it
+sol = Solution()
+nums1 = [0, 2, 0, 3, 0, 6]
+nums2 = [2, 5, 6]
+index = 3
+sol.merge(nums1, nums2, index)
+print(nums1)
+'''
