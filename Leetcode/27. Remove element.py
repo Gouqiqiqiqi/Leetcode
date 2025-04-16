@@ -23,20 +23,20 @@ Approach:
 
 class Solution:
     def removeElement(self, nums: list[int], val: int) -> int:
-        k = 0 # Start from 0 because we don't know how many elements are not equal to val
+        count = 0 # Start from 0 because we don't know how many elements are not equal to val
         # Iterate through the array nums
         for i in range(len(nums)):
             if nums[i] != val:
-                nums[k] = nums[i]
-                k += 1
-        return k
+                nums[count] = nums[i]
+                count += 1
+        return count
     
 
 nums = [3,2,2,3,3]
 val = 2
 sol = Solution()
-k = sol.removeElement(nums, val)  # Output: 3
-print(k)  # Print the number of elements not equal to val
+count = sol.removeElement(nums, val)  # Output: 3
+print(count)  # Print the number of elements not equal to val
 
 
 '''
@@ -125,14 +125,14 @@ Find value of k in the array nums, remove all occurrences of val in nums in-plac
 
 class Solution:
     def removeElementAndReturnArray(self, nums: list[int], val: int) -> int:
-        k = 0  # Number of elements not equal to val
+        count = 0  # Number of elements not equal to val
         for i in range(len(nums)):
             if nums[i] != val:
-                nums[k] = nums[i]
-                k += 1
+                nums[count] = nums[i]
+                count += 1
         # Trim the original list to only include the first k elements
-        del nums[k:]
-        return k  
+        del nums[count:]
+        return count  
 
 # Example usage
 nums = [3, 2, 2, 3, 3]
@@ -142,5 +142,36 @@ k = sol.removeElementAndReturnArray(nums, val)
 
 print(k)
 print(nums)
+
+'''
+
+
+
+'''
+Special notes:
+
+In this question, using:
+
+for i in nums:
+    if i != val:
+        nums[k] = i
+        k += 1
+will not work!, beacuse the for loop will iterate over the original list nums, and if you modify nums while iterating over it, 
+it will lead to unexpected behavior.
+This is because the for loop will not be aware of the changes made to nums, and it will continue to iterate over the original list, 
+which may result in skipping elements or accessing out-of-bounds indices. Therefore, it is essential to avoid modifying the list while iterating over it.
+
+❌ Broken version:
+
+nums = [3, 2, 2, 3]
+val = 3
+
+for i in nums:  # i = 3, then 2, then 2, then 3
+    if nums[i] != val:  # nums[3]?? nums[2]?? unpredictable!
+i = 3 → you're trying nums[3] — that works by chance.
+
+But if i = 10? You get an IndexError.
+
+You are confusing the element (i) with an index.
 
 '''

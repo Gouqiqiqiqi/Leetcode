@@ -209,6 +209,10 @@ for i in range(len(nums)):
     print(nums[i])
 
 Despite the fact that work slightly differently, they are functionally equivalent in this case.
+However, bear in mind that for i in nums, it is reading the elements of nums directly, while for i in range(len(nums)), 
+it is reading the indices of nums and then using those indices to access the elements.
+
+There are cases where you can only use for i in range(len(nums)), for example, if you want to modify the elements of nums in place. (e.g. Question 27. Remove Element)
 
 
 #enumerate()
