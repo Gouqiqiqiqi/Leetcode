@@ -10,17 +10,16 @@ class Solution:
         """
         Boyer-Moore Voting Algorithm
         """
-        count = 0
-        candidate = None
+        count = 0 #Assign 0 to count
+        candidate = None #Assign None to candidate
 
         for i in nums:
-            if count == 0:
-                candidate = i
-            count += (1 if i == candidate else -1)
+            if count == 0:  #Check if count is 0
+                candidate = i   #Assign i to candidate
+            count += (1 if i == candidate else -1) #Check if i is equal to candidate, if yes, increment count by 1, else decrement count by 1
 
         return candidate
     
-
 nums = [2,2,1,1,1,2,2]
 sol = Solution()
 print(sol.majorityElement(nums))  # Output: 2
@@ -118,5 +117,16 @@ Check: Current element 2 matches the new candidate 2.
 Increment count: count = 0 + 1 → count = 1
 
 Final State: candidate = 2, count = 1
+
+
+'''
+
+
+'''
+
+= vs ==:
+= is used for assignment, while == is used for comparison.
+
+
 
 '''

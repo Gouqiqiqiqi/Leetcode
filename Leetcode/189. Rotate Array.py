@@ -42,4 +42,9 @@ nums = [1, 2, 3, 4, 5]
 n = len(nums) = 5
 k = 8
 k % n = 8 % 5 = 3 # Where 3 is the reminder of 8 divided by 5.
+
+
+Some maths basics:
+3 ÷ 7 = 0 remainder 3 (since 7 × 0 = 0, and 3 − 0 = 3)
+7 ÷ 3 = 2 remainder 1 (since 3 × 2 = 6, and 7 − 6 = 1)
 '''
