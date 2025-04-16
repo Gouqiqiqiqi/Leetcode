@@ -16,7 +16,7 @@ class Solution:
         for i in nums:
             if count == 0:  #Check if count is 0
                 candidate = i   #Assign i to candidate
-            count += (1 if i == candidate else -1) #Check if i is equal to candidate, if yes, increment count by 1, else decrement count by 1
+            count += (1 if candidate == i  else -1) #Check if i is equal to candidate, if yes, increment count by 1, else decrement count by 1
 
         return candidate
     
