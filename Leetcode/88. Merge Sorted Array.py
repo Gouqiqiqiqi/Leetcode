@@ -146,3 +146,85 @@ index = 3
 sol.merge(nums1, nums2, index)
 print(nums1)
 '''
+
+'''
+nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+
+expected output: [1,2,2,3,5,6]
+
+If I do:
+        nums1 = nums1 + nums2
+        nums1 = [x for x in nums1 if x != 0]
+        nums1.sort()
+        print(nums1)
+
+        the output will be:
+        [1, 2, 2, 3, 5, 6]
+        which is correct.
+        However, leetcode will not accept this solution because it is not in-place.
+        Aka, it is not modifying the original nums1 list.
+        Instead, it is creating a new list and assigning it to nums1.
+
+        This satisfies the 'in-place' requirement of the question:
+        nums1[0:m+n] = nums1[0:m] + nums2[0:n]
+        nums1.sort()
+
+        Why? 
+        What is inplace?
+        In-place means that the original data structure is modified directly without creating a new copy of it.
+        nums1 = ... (which replaces the whole list object).
+        nums1[:] = ... (which modifies the contents of the list object in place).
+        Especially important in Python when lists are passed by reference. If you do nums1 = something, the original reference is lost. But if you do nums1[:] = something, the original list is updated.
+
+'''
+
+
+'''
+nums = [10, 11, 12, 13, 14]
+for i in nums:
+    print(i)
+
+output: [10, 11, 12, 13, 14]
+
+vs 
+
+for i in range(len(nums)):
+    print(i)
+output: [0, 1, 2, 3, 4] #It will print the index of the elements in nums.
+
+vs
+
+for i in range(len(nums)):
+    print(nums[i])
+
+output: [10, 11, 12, 13, 14] #It will print the elements in nums.
+
+Hence:
+for i in nums:
+    print(i)
+
+is the same as 
+
+for i in range(len(nums)):
+    print(nums[i])
+
+Despite the fact that work slightly differently, they are functionally equivalent in this case.
+
+
+#enumerate()
+This is a built-in function in Python that takes an iterable (like a list)
+
+nums = [10, 11, 12, 13, 14]
+print(list(enumerate(nums)))
+#output: [(0, 10), (1, 11), (2, 12), (3, 13), (4, 14)]
+#It will print the index and the element in nums.
+This is a built-in function in Python that takes an iterable (like a list) 
+and returns an iterator that produces pairs of an index and the corresponding value from the iterable.
+
+nums = [10, 11, 12, 13, 14]
+
+for index, number in enumerate(nums):
+    print([index, number])
+#output: [(0, 10), (1, 11), (2, 12), (3, 13), (4, 14)]
+
+'''
