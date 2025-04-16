@@ -40,70 +40,138 @@ print(k)          # Output: 5
 print(nums[:k])   # Output: [0, 1, 2, 3, 4]
 
 '''
-Step-by-step:
+Using 
+if nums[i] != nums[k-1]: 
+is better than 
+if nums[i] != nums[i-1]:
 
-🌀 Iteration 1: Start: i = 1, k = 1
+✅ Method 1:
+class Solution:
+    def removeDuplicates(self, nums: list[int]) -> int:
+        k = 1
+        # nums.sort()  # Not needed if nums is already sorted
+        for i in range(1, len(nums)):
             if nums[i] != nums[k-1]:
-nums[1] = 0, nums[0] = 0 → Duplicate, so skip
+                nums[k] = nums[i]
+                k += 1
+        return k
+Compares nums[i] with nums[k-1]
 
---------------------------------------------------------
+This is a more robust method because it always compares the current number to the last unique number (which is at index k-1)
 
-🌀 Iteration 2: Start: i = 2, k = 1
-nums[2] = 1, nums[1] = 0 → Different, so it's unique
+Safer in scenarios where the list might not be fully sorted
 
-                nums[k] = nums[i]  # nums[1] = 1
-                k += 1             # k = 2
-nums = [0, 1, 1, 1, 2, 2, 3, 3, 4]
-We placed 1 at index 1.
+✅ Method 2:
+class Solution:
+    def removeDuplicates(self, nums: list[int]) -> int:
+        k = 1
+        # nums.sort()  # Not needed if nums is already sorted
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i-1]: 
+                nums[k] = nums[i]
+                k += 1
+        return k
+Compares nums[i] with nums[i-1]
 
----------------------------------------------------------
+Relies entirely on the fact that the array is already sorted, because only then are duplicates adjacent
 
-🌀 Iteration 3: Start: i = 3, k = 2
-nums[3] = 1, nums[2] = 1 → Duplicate → skip
+This method is less robust in scenarios where the list might not be fully sorted
 
-----------------------------------------------------------
+'''
 
-🌀 Iteration 4: Start: i = 4, k = 2
-nums[4] = 1, nums[3] = 1 → Duplicate → skip
+'''
+Detailed Explanation:
 
-----------------------------------------------------------
+nums = [0, 0, 1, 1, 2, 2, 3, 3, 4]
+k = 1
+i = 1
 
-🌀 Iteration 5: Start: i = 5, k = 2
-nums[5] = 2, nums[4] = 1 → Different → unique
+🧠 Iteration by Iteration:
 
-                nums[k] = nums[i]  # nums[2] = 2
-                k += 1             # k = 3
-nums = [0, 1, 2, 1, 1, 2, 2, 3, 3, 4]
+i = 1, k = 1:
+Compare: nums[1] = 0 vs nums[k-1] = nums[0] = 0
 
-------------------------------------------------------------   
+Equal → Duplicate → Do nothing
 
-🌀 Iteration 6: Start: i = 6, k = 3
-nums[6] = 2, nums[5] = 2 → Duplicate → skip
+k = 1
 
-------------------------------------------------------------
+i = 2, k = 1:
+Compare: nums[2] = 1 vs nums[0] = 0
 
-🌀 Iteration 7: Start: i = 7, k = 3
-nums[7] = 3, nums[6] = 2 → Unique
+Not equal → New unique element
 
-                nums[k] = nums[i]  # nums[3] = 3
-                k += 1             # k = 4
-nums = [0, 1, 2, 3, 1, 2, 2, 3, 3, 4]
+Assign: nums[1] = 1
 
-------------------------------------------------------------
+Increment k = 2
 
-🌀 Iteration 8: Start: i = 8, k = 4
-nums[8] = 3, nums[7] = 3 → Duplicate → skip
+nums becomes: [0, 1, 1, 1, 2, 2, 3, 3, 4]
 
-------------------------------------------------------------
+i = 3, k = 2:
+Compare: nums[3] = 1 vs nums[1] = 1
 
-🌀 Iteration 9: Start: i = 9, k = 4
-nums[9] = 4, nums[8] = 3 → Unique
+Equal → Duplicate → Do nothing
 
-                nums[k] = nums[i]  # nums[4] = 4
-                k += 1             # k = 5
-nums = [0, 1, 2, 3, 4, 2, 2, 3, 3, 4]
+k = 2
 
-final result:
-k = 5
-nums[:k] = [0, 1, 2, 3, 4]
+i = 4, k = 2:
+Compare: nums[4] = 2 vs nums[1] = 1
+
+Not equal → New unique element
+
+Assign: nums[2] = 2
+
+Increment k = 3
+
+nums becomes: [0, 1, 2, 1, 2, 2, 3, 3, 4]
+
+i = 5, k = 3:
+Compare: nums[5] = 2 vs nums[2] = 2
+
+Equal → Duplicate → Do nothing
+
+k = 3
+
+i = 6, k = 3:
+Compare: nums[6] = 3 vs nums[2] = 2
+
+Not equal → New unique element
+
+Assign: nums[3] = 3
+
+Increment k = 4
+
+nums becomes: [0, 1, 2, 3, 2, 2, 3, 3, 4]
+
+i = 7, k = 4:
+Compare: nums[7] = 3 vs nums[3] = 3
+
+Equal → Duplicate → Do nothing
+
+k = 4
+
+i = 8, k = 4:
+Compare: nums[8] = 4 vs nums[3] = 3
+
+Not equal → New unique element
+
+Assign: nums[4] = 4
+
+Increment k = 5
+
+nums becomes: [0, 1, 2, 3, 4, 2, 3, 3, 4]
+
+✅ Final Result:
+k = 5 → Number of unique elements
+
+First k elements of nums = [0, 1, 2, 3, 4]
+
+Rest of the array doesn't matter
+
+📌 Summary:
+This method works by:
+
+Keeping track of the last unique element via nums[k-1]
+
+Ensuring that any new unique number gets copied to the correct position (nums[k])
+
 '''

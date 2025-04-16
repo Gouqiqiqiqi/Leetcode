@@ -28,16 +28,7 @@ print(nums)
 
 
 '''
-Reflection:
-This is simiar to Question 26, but with a twist.
-The twist is that we can have at most two duplicates of each number.
-The key difference is 
-:if nums[i] != nums[k - 2]: 
-rather than 
-:nums[i] != nums[i - 1]:
-
-
-why it is nums[k - 2] rather than ums[i - 1]?
+Why it is nums[k - 2] rather than ums[i - 1]?
 Because we are allowed to have at most two duplicates of each number.
 
 why it is nums[k - 2] rather than ums[i - 2]?
@@ -49,6 +40,7 @@ Skip valid entries if the first few were already skipped.
 
 
 '''
+
 Step-by-step CORRECT: if nums[i] != nums[k - 2]: 
 nums = [1, 1, 1, 2, 2, 3]
 
