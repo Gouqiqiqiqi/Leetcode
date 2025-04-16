@@ -146,7 +146,6 @@ print(nums)
 '''
 
 
-
 '''
 Special notes:
 

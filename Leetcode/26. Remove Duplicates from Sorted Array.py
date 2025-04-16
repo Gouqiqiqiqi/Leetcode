@@ -20,11 +20,12 @@ For i in range(8, len(nums)):
 '''
 class Solution:
     def removeDuplicates(self, nums: list[int]) -> int:
-        if len(nums) == 0:
+        if not nums: #Optional line, to include if you want the solution to always work even if the list is empty *
             return 0
         k = 1   # Start from 1 instead of 0 because the first element is always unique
+        #nums.sort() If the list is not sorted, use this line to sort it first, otherwise the solution will not work *
         for i in range(1, len(nums)): #Start a loop from the second element (index 1) to the end, again, because the first element is always unique
-            if nums[i] != nums[i-1]:
+            if nums[i] != nums[k-1]:
                 nums[k] = nums[i]
                 k += 1
         #del nums[k:] # Optional: Remove the duplicates from the list
@@ -42,7 +43,7 @@ print(nums[:k])   # Output: [0, 1, 2, 3, 4]
 Step-by-step:
 
 🌀 Iteration 1: Start: i = 1, k = 1
-            if nums[i] != nums[i-1]:
+            if nums[i] != nums[k-1]:
 nums[1] = 0, nums[0] = 0 → Duplicate, so skip
 
 --------------------------------------------------------

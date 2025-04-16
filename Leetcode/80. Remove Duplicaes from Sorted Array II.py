@@ -37,8 +37,13 @@ rather than
 :nums[i] != nums[i - 1]:
 
 
-why it is k-2 rather than k-1?
+why it is nums[k - 2] rather than ums[i - 1]?
 Because we are allowed to have at most two duplicates of each number.
+
+why it is nums[k - 2] rather than ums[i - 2]?
+If you used nums[i - 2], you might:
+Let in too many duplicates (because it checks earlier input, not written result).
+Skip valid entries if the first few were already skipped.
 
 '''
 

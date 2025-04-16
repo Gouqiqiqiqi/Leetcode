@@ -1,6 +1,17 @@
-nums = [10, 11, 12, 13, 14]
+class Solution:
+    def removeDuplicates(self, nums: list[int]) -> int:
+        if len(nums) == 0:
+            return 0
+        k = 1
+        for i in range (1, len(nums)):
+            if nums[i] != nums[i-1]:
+                nums[k] = nums[i]
+                k += 1
+        return k
+    
 
-for index, number in enumerate(nums):
-    print([index, number])
+nums = [0]
 
-# output: [(0, 10), (1, 11), (2, 12), (3, 13), (4, 14)]
+sol = Solution()
+
+print(sol.removeDuplicates(nums))
