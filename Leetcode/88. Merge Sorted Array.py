@@ -7,6 +7,21 @@ The final sorted array should not be returned by the function, but instead be st
 To accommodate this, nums1 has a length of m + n, 
 where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
 
+
+Non-decreasing	a[i] <= a[i+1]
+Increasing	a[i] < a[i+1]
+
+✅ Non-decreasing order
+Means that the values stay the same or increase — they never go down.
+
+Example:
+1, 2, 2, 3, 4
+
+🔼 Increasing order (strictly increasing)
+Means that each value must be greater than the one before — no repeats allowed.
+
+Example:
+1, 2, 3, 4, 5
 ------------------------------------------------------------------------------------------------
 
 Notes:
@@ -73,7 +88,7 @@ class Solution:
 
 # Test it
 sol = Solution()
-nums1 = [1, 2, 3, 0, 0, 0]
+nums1 = [1, 2, 3, 0, 0, 0] # 0 is a placeholder for the elements of nums2, it is not part of the original nums1 list, hence doesn't violate the non-decreasing order.
 m = 3
 nums2 = [2, 5, 6]
 n = 3
@@ -231,4 +246,13 @@ for index, number in enumerate(nums):
     print([index, number])
 #output: [(0, 10), (1, 11), (2, 12), (3, 13), (4, 14)]
 
+'''
+
+
+'''
+TypeError: 'list' object is not callable
+
+This happens when you try to call a list as if it were a function.
+i.e print (nums1(2)) instead of print(nums1[2])
+# This is a common mistake when using parentheses instead of square brackets to access list elements.
 '''

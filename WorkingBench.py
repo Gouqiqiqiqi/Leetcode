@@ -1,17 +1,3 @@
-class Solution:
-    def removeDuplicates(self, nums: list[int]) -> int:
-        if len(nums) == 0:
-            return 0
-        k = 1
-        for i in range (1, len(nums)):
-            if nums[i] != nums[i-1]:
-                nums[k] = nums[i]
-                k += 1
-        return k
-    
+nums1 = [0, 1, 2, 2, 3, 4, 5, 5, 6]
 
-nums = [0]
-
-sol = Solution()
-
-print(sol.removeDuplicates(nums))
+print(nums1(2))  # ➜ [0, 1, 2, 2, 3, 4, 5, 5, 6]
