@@ -1,3 +1,3 @@
-nums1 = [0, 1, 2, 2, 3, 4, 5, 5, 6]
+min_price = float('inf')
 
-print(nums1(2))  # ➜ [0, 1, 2, 2, 3, 4, 5, 5, 6]
+print (min_price)  # Output: inf (positive infinity)
