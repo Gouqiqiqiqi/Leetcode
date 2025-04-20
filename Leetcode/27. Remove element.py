@@ -38,6 +38,21 @@ sol = Solution()
 count = sol.removeElement(nums, val)  # Output: 3
 print(count)  # Print the number of elements not equal to val
 
+'''
+Initialize k = 0 is necessary, otherwise UnboundLocalError: cannot access local variable 'k' where it is not associated with a value
+
+Why this happens:
+In Python, variables must be assigned before you can use them. In your code:
+
+You try to use k inside the if block with nums[k] = nums[i].
+
+But if k hasn't been initialized before the loop, Python doesn't know what k is — it's just an undefined name at that point.
+
+Even if the condition nums[i] != val is true later during iteration, Python needs to know what k is right from the beginning, because you're using it inside the block.
+
+
+''' 
+
 
 '''
 Step-by-step:
@@ -142,6 +157,21 @@ k = sol.removeElementAndReturnArray(nums, val)
 
 print(k)
 print(nums)
+
+
+Question 3:
+Rearranging the array nums such that all occurrences of val are at the end of the array.
+class Solution:
+    def rearrangeArray(self, nums: list[int], val: int) -> list[int]:
+        count = 0  # Number of elements not equal to val
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[count] = nums[i]
+                count += 1
+        # Fill the remaining elements with val
+        for i in range(count, len(nums)):
+            nums[i] = val
+        return nums
 
 '''
 
