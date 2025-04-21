@@ -13,8 +13,8 @@ class Solution:
 
         #if k < 0: #if k is negative, we can convert it to a positive rotation by adding n to k.
             #k = n + k
-            
-        nums[:] = nums[-k:] + nums[:-k]
+                    
+        nums[:] = nums[n-k:] + nums[:n-k]
 
 nums = [1, 2, 3, 4, 5, 6, 7]
 k = 3
@@ -63,16 +63,6 @@ nums[-k:] is equal to nums[len(nums)-k:] which is equal to nums[7-3:] = nums[4:]
 nums[:-k] is equal to nums[:len(nums)-k] which is equal to nums[:7-3] = nums[:4] = [1, 2, 3, 4]
 '''
 
-
-
-
-
-
-
-
-
-
-
 '''
 Notes:
 
@@ -89,3 +79,29 @@ Some maths basics:
 7 ÷ 3 = 2 remainder 1 (since 3 × 2 = 6, and 7 − 6 = 1)
 '''
 
+
+'''
+How to understand the solution more intuitively:
+
+array = [1, 2, 3, 4, 5]
+n = len(array) # 5
+k = 2
+#We want to rotate the array to the right by 2 steps.
+
+#After rotating, the array will look like this:
+#Output: [4, 5, 1, 2, 3]
+
+#Do you spot anything interesting?
+
+#The last k elements of the array are now at the beginning of the array.
+print(array[:n-k])  # This will output [1, 2, 3]
+print(array[n-k:])  # This will output [4, 5]
+
+
+In the solution, 
+nums[:] = nums[n-k:] + nums[:n-k]
+is the same as:
+nums[:] = nums[-k:] + nums[:-k]
+This is because:
+k is already wrapped with k %= n, meaning 0 <= k < n
+'''

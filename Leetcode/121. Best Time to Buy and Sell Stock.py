@@ -25,6 +25,15 @@ price = [7, 1, 5, 3, 6, 4]
 s = Solution()
 print(s.maxProfit(price))  # Output: 5 (Buy on day 2 and sell on day 5)
 
+
+'''
+The logic to solve the problem is as follows:
+1. find the minimum price in the list of prices.
+2. find the maximum profit by subtracting the minimum price from the current price.
+3. If the current price is less than the minimum price, update the minimum price.
+4. Return the maximum profit after iterating through all prices.
+'''
+
 '''
 #min(x, y):
 The function min(x, y) is a built-in Python function that simply returns the smaller of the two values x and y.

@@ -17,23 +17,27 @@ Jumping 1 step forwards to 3 is the best option because it allows you to jump 2 
 # To solve this problem, we only care if we can reach the last number or not.
 class Solution:
     def canJump(self, nums: list[int]) -> bool:
-        max_reach = 0
+        farthest = 0
         for i in range(len(nums)):
-            if i > max_reach:
+            if i > farthest:
                 return False
-            max_reach = max(max_reach, i + nums[i])
+            farthest = max(farthest, i + nums[i])
         return True
     
+
+s = Solution()
+nums = [2, 3, 1, 1, 4]
+print(s.canJump(nums))  # Output: True
 
 '''
 Line by line explaination:
 
-max_reach = 0
+farthest  = 0
 # This keeps track of the farthest index you can reach so far.
-# At the start, you haven't made any jumps yet, so max_reach starts as 0.
+# At the start, you haven't made any jumps yet, so farthest starts as 0.
 
 for i in range(len(nums)):
-    if i > max_reach:
+    if i > farthest:
         return False
     max_reach = max(max_reach, i + nums[i])
 return True

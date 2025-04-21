@@ -24,3 +24,12 @@ prices = [7, 1, 5, 3, 6, 4]
 solution = Solution()
 result = solution.maxProfit(prices)
 print(result)
+
+
+'''
+The logic behind this question:
+1. Find the difference between the current price and the previous price.
+2. If the difference is positive, add it to the max_profit.
+3. If the difference is negative, ignore it.
+4. Return the max_profit.
+'''
