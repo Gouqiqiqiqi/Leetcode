@@ -101,7 +101,11 @@ This means
 
 nums[0] = 2 can reach index 2
 
-nums[1] = 4 can reach index 4 --The last index
+nums[1] = 4 can reach index 4 --Already reached last index
 
+nums[2] = 3 can reach index 3 
 
+nums[3] = 4 can reach index 4 
+
+nums[4] = 4 can reach index 8 
 '''
