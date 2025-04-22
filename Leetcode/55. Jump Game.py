@@ -13,7 +13,9 @@ First number is 2 so you can jump 1 or 2 steps forward.
 Jumping 1 step forwards to 3 is the best option because it allows you to jump 2 steps forward to 4, which is the end of the array. Problem solved.
 '''
 
-# To solve this problem, we only care if we can reach the last number or not.
+# To solve this problem, we only care if we can reach the current index using the maximum jump length.
+# And we loop through the array, if we can always reach the current index, we can reach the last index.
+
 class Solution:
     def canJump(self, nums: list[int]) -> bool:
         farthest_index = 0
@@ -80,5 +82,26 @@ farthest_index = max(farthest_index, i + nums[i])
     i + nums[i] is the max position we can jump to from index i.
 
     So this step says: "Can we go even further from here?"
+
 '''
 
+
+'''
+nums = [2, 3, 1, 1, 4]
+
+farthest = 0
+
+farthest = max(farthest, nums[i] + i)
+
+print ([nums[i] + i for i in range (len(nums))])
+
+#Output is [2, 4, 3, 4, 8]
+
+This means 
+
+nums[0] = 2 can reach index 2
+
+nums[1] = 4 can reach index 4 --The last index
+
+
+'''
