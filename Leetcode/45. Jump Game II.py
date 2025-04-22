@@ -19,3 +19,7 @@ class Solution:
                 current_end = farthest
 
         return jumps
+    
+nums = [2, 3, 1, 1, 4]
+
+
