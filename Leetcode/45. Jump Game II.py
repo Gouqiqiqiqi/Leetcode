@@ -23,3 +23,9 @@ class Solution:
 nums = [2, 3, 1, 1, 4]
 
 
+'''
+Let's understand the variable names used in the code:
+- jumps: This variable keeps track of the number of jumps made. We increase this counter but want to minimize it.
+- current_end: This variable represents the farthest index that can be reached with the current number of jumps.
+- farthest: This variable keeps track of the farthest index that can be reached from the current index.
+'''
