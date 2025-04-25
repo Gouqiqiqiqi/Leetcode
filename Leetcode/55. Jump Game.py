@@ -109,3 +109,23 @@ nums[3] = 4 can reach index 4
 
 nums[4] = 4 can reach index 8 
 '''
+
+
+'''
+Indentation is important in Python.
+
+class Solution:                         # 0 indent: defines a class
+    def canJump(self, nums: List[int]) -> bool:  # 1 indent (4 spaces): defines a method inside the class
+        max_jump = 0                    # 2 indents (8 spaces): inside the method
+        for i in range(len(nums)):     # still inside the method
+            if i > max_jump:           # inside the for loop
+                return False           # inside the if block
+            max_jump = max(max_jump, i + nums[i])  # still inside the for loop
+        return True                    # this line is outside the for loop but still inside the method
+
+Class level: no indentation.
+
+Method level: indented once (usually 4 spaces).
+
+Inside method logic: more indentation for loops, conditionals, etc.
+'''
