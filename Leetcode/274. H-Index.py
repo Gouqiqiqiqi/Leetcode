@@ -1,4 +1,6 @@
 '''
+Question:
+
 Given an array of integers citations where citations[i] is the number of citations a researcher received for their ith paper, 
 return the researcher's h-index.
 
@@ -13,14 +15,14 @@ Understand the question:
 citations = [3, 0, 6, 1, 5]
 Try all possible values of h from 0 to 5 (because there are 5 papers), and count how many papers have at least that many citations:
 
-h	Number of papers with ≥ h citations
-0	5 (all)
-1	4 (3,6,1,5)
-2	4 (3,6,5,1)
-3	3 (3,6,5)
-4	2 (6,5)
-5	2 (6,5)
-6	1 (6)
+| h | Papers with ≥ h citations     | Count |
+|---|-------------------------------|---------|
+| 0 | 6, 5, 3, 1, 0                 | 5 ✅    |
+| 1 | 6, 5, 3, 1                    | 4 ✅    |
+| 2 | 6, 5, 3                       | 3 ✅    |
+| 3 | 6, 5, 3                       | 3 ✅    |
+| 4 | 6, 5                          | 2 ❌    |
+| 5 | 6, 5                          | 2 ❌    |
 
 Now, find the largest h such that:
 
@@ -45,6 +47,16 @@ citations = [3, 0, 6, 1, 5]
 c = Solution()
 print(c.hIndex(citations)) # Output: 3
 
+
+
+'''
+One key sentence in the code is:
+if citations[i] < i + 1:
+instead of 
+if citations[i] < i:
+This is because python is 0-indexed, and we need to compare the number of papers with the number of citations.
+When index i is 0, it means we have seen 1 paper, and we need to compare it with the number of citations.
+'''
 
 '''
 Explain the code:
