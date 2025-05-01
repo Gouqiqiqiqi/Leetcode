@@ -23,13 +23,13 @@ Approach:
 
 class Solution:
     def removeElement(self, nums: list[int], val: int) -> int:
-        count = 0 # Start from 0 because we don't know how many elements are not equal to val
+        k = 0 # Start from 0 because we don't know how many elements are not equal to val
         # Iterate through the array nums
         for i in range(len(nums)):
             if nums[i] != val:
-                nums[count] = nums[i]
-                count += 1
-        return count
+                nums[k] = nums[i]
+                k += 1
+        return k
     
 
 nums = [3,2,2,3,3]
