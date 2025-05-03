@@ -22,7 +22,6 @@ Try all possible values of h from 0 to 5 (because there are 5 papers), and count
 | 2 | 6, 5, 3                       | 3 ✅    |
 | 3 | 6, 5, 3                       | 3 ✅    |
 | 4 | 6, 5                          | 2 ❌    |
-| 5 | 6, 5                          | 2 ❌    |
 
 Now, find the largest h such that:
 
@@ -32,6 +31,7 @@ For h = 3, there are 3 papers with ≥ 3 citations → ✅
 For h = 4, only 2 papers with ≥ 4 → ❌
 
 So the h-index is 3.
+
 '''
 
 class Solution:
@@ -47,7 +47,26 @@ citations = [3, 0, 6, 1, 5]
 c = Solution()
 print(c.hIndex(citations)) # Output: 3
 
+'''
+Let's break down the variables:
 
+If list = [3, 0, 6, 1, 5]
+list.sort(reverse=True) = [6, 5, 3, 1, 0]
+n = len(citations) = 5
+i = [0, 1, 2, 3, 4]
+
+citations[i] is the number of citations for the i-th paper.
+i + 1 is the number of papers we've seen so far, because we start from 0, therefore we need to add 1.
+
+| i | citations [i] | i + 1 | Check: citations [i] < i + 1 | Result         |
+| - | ------------- | ----- | ---------------------------- | -------------- |
+| 0 | 6             | 1     | 6 < 1 → **False**            | Keep going     |
+| 1 | 5             | 2     | 5 < 2 → **False**            | Keep going     |
+| 2 | 3             | 3     | 3 < 3 → **False**            | Keep going     |
+| 3 | 1             | 4     | 1 < 4 → **True**             | **Return 3** ✅ |
+| 4 | 0             | 5     | not reached                  | Loop exited    |
+
+'''
 
 '''
 One key sentence in the code is:
@@ -59,43 +78,10 @@ When index i is 0, it means we have seen 1 paper, and we need to compare it with
 '''
 
 '''
-Explain the code:
+Another key sentence in the code is:
+                return i
+        return n
 
-When the list is sorted descending, you're going through the researcher's most-cited papers first.
-
-At each position i (starting from 0):
-
-i + 1 is how many papers we've seen so far.
-
-citations[i] is the number of citations for the current paper.
-
-So we're asking:
-
-“Does the researcher have at least i + 1 papers with i + 1 or more citations?”
-
-As soon as citations[i] < i + 1, that means:
-
-“We’ve gone too far — there aren’t i + 1 papers with that many citations.”
-
-So the h-index is exactly i at that point.
-
-✏️ Example: citations = [6, 5, 3, 1, 0]
-Let’s walk through it:
-
-
-i	citations[i]	i + 1	Compare	Result
-0	6	1	6 ≥ 1 → OK	continue
-1	5	2	5 ≥ 2 → OK	continue
-2	3	3	3 ≥ 3 → OK	continue
-3	1	4	1 < 4 → Stop!	return 3
-➡️ So the h-index is 3 (3 papers with at least 3 citations).
-
-✅ Summary:
-We compare with i + 1 because:
-
-i + 1 means: this is the (i+1)-th most cited paper.
-
-To have h-index = h, you need h papers with at least h citations.
-
-As soon as citations[i] < i + 1, that h-index is not achievable — so return i.
+This means the h index = i, if the condition is met. If no i satisfies citations[i] < i + 1, return n.
+This means all papers have at least n citations, so the h index is n, or h index = n = i + 1.
 '''
