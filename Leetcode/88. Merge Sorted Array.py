@@ -86,6 +86,7 @@ class Solution:
         nums1[:m+n] = nums1[:m] + nums2[:n]
         nums1.sort()
 
+
 # Test it
 sol = Solution()
 nums1 = [1, 2, 3, 0, 0, 0] # 0 is a placeholder for the elements of nums2, it is not part of the original nums1 list, hence doesn't violate the non-decreasing order.
