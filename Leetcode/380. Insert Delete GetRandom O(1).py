@@ -170,34 +170,35 @@ import random
 class RandomizedSet:
 
     def __init__(self):
-        self.num_dict = {}  # maps value to its index in the list
-        self.num_list = []  # list of inserted values
+        self.dict = {}  # maps value to its index in the list
+        self.list = []  # list of inserted values
 
     def insert(self, val: int) -> bool:
-        if val in self.num_dict:
+        if val in self.dict:
             return False
-        self.num_list.append(val)
-        self.num_dict[val] = len(self.num_list) - 1
+        self.dict[val] = len(self.list)
+        self.list.append(val)
         return True
 
     def remove(self, val: int) -> bool:
-        if val not in self.num_dict:
+        if val not in self.dict:
             return False
         # Get index of the element to remove
-        idx_to_remove = self.num_dict[val] # index of the element to remove
-        last_element = self.num_list[-1] # last element in the list
+        index_to_remove_in_dict = self.dict[val] # index of the element to remove
+        last_element_in_list = self.list[-1] # last element in the list
 
         # Move the last element to the place of the element to delete
-        self.num_list[idx_to_remove] = last_element # reassign the last element to the index of the element to remove
-        self.num_dict[last_element] = idx_to_remove # update the index of the last element to the index of the element to remove
+        self.dict[last_element_in_list] = index_to_remove_in_dict # update the index of the last element to the index of the element to remove
+        self.list[index_to_remove_in_dict] = last_element_in_list # reassign the last element to the index of the element to remove
+
 
         # Remove the last element from the list and delete from dict
-        self.num_list.pop()
-        del self.num_dict[val]
+        del self.dict[val]
+        self.list.pop()
         return True
 
     def getRandom(self) -> int:
-        return random.choice(self.num_list)
+        return random.choice(self.list)
     
 
 randomizedSet = RandomizedSet()
@@ -340,11 +341,11 @@ if 12 not in self.num_to_index:
 
 Step 2: Get the index of 12
 
-idx_to_remove = self.num_to_index[12]  # 3
+index_to_remove_in_dict = self.num_to_index[12]  # 3
 
 Step 3: Get the last element in the list
 
-last_element = self.num[-1]  # 10
+last_element_in_list = self.num[-1]  # 10
 
 Step 4: Overwrite the index of 12 with the last element (10)
 
@@ -399,12 +400,12 @@ print(my_dict)  # Output: {'a': 1, 'c': 3}
 
 '''
 A key point to achieve 0(1) time complexity for insert, remove, and getRandom is:
-to use      if val in self.num_dict:
+to use      if val in self.dict:
             return False
 
 to check if the value is already in the dictionary.
 
-rather than if val in self.num_list:
+rather than if val in self.list:
             return False
 This is because checking membership in a dictionary is O(1) on average, while checking membership in a list is O(n).
 
