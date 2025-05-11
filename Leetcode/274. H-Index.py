@@ -33,7 +33,7 @@ For h = 4, only 2 papers with ≥ 4 → ❌
 So the h-index is 3.
 
 '''
-
+#Better solution:
 class Solution:
     def hIndex(self, citations: list[int]) -> int:
         citations.sort(reverse=True)
@@ -42,6 +42,21 @@ class Solution:
             if citations[i] < i + 1:
                 return i
         return n
+
+citations = [3, 0, 6, 1, 5]
+c = Solution()
+print(c.hIndex(citations)) # Output: 3
+
+
+#What I prefer:
+class Solution:
+    def hIndex(self, citations: list[int]) -> int:
+        citations.sort(reverse = True)
+        h = 0
+        for i in range(len(citations)):
+            if citations[i] >= i + 1:
+                h += 1
+        return h
 
 citations = [3, 0, 6, 1, 5]
 c = Solution()

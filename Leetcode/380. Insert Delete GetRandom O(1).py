@@ -176,8 +176,8 @@ class RandomizedSet:
     def insert(self, val: int) -> bool:
         if val in self.dict:
             return False
-        self.dict[val] = len(self.list)
-        self.list.append(val)
+        self.list.append(val) #This step needs to be done first!!!
+        self.dict[val] = len(self.list) -1 # index of the newly added element
         return True
 
     def remove(self, val: int) -> bool:
