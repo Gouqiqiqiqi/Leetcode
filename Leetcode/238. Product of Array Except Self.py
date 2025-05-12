@@ -32,7 +32,7 @@ class Solution:
         # Calculate suffix products and multiply with prefix products
         suffix_product = 1 # We haven't encountered any elements yet, so the suffix product is 1; Why 1? Again, because 1 is the multiplicative identity.
         for i in range(n - 1, -1, -1):
-            answer[i] *= suffix_product
+            answer[i] *= suffix_product # Multiply prefix product with suffix product
             suffix_product *= nums[i]
 
         return answer
