@@ -65,8 +65,26 @@ farthest_index = max(farthest_index, i + nums[i])
 # if i = 0, nums[i] = 2, then i + nums[i] = 2, so farthest_index = max(0, 2) = 2.
 # if i = 1, nums[i] = 3, then i + nums[i] = 4, so farthest_index = max(2, 4) = 4.
 
+Note: the order fo the lines is important.
 
-The loop is checking whether fartest_index is greater than or equal to the current index.
+this is wrong:
+ for i in range(len(nums)):
+            farthest_index = max(farthest_index, nums[i] + i)
+            if i > farthest_index:
+                return False
+
+this is correct:
+ for i in range(len(nums)):
+            if i > farthest_index:
+                return False 
+            farthest_index = max(farthest_index, nums[i] + i)
+
+Why This Works:
+First, it checks if i is reachable.
+Then, it updates how far you can jump from here.
+Only if i is within range do we consider extending the farthest_index.
+
+The loop is checking whether farthest_index is greater than or equal to the current index.
 # If it is, we can reach that index. If it isn't, we can't reach that index and return False.
 # If we reach the end of the loop without returning False, it means we can reach the last index, so we return True.
 
