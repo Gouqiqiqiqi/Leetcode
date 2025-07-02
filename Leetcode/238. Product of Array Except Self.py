@@ -39,6 +39,92 @@ class Solution:
 
 
 '''
+Let's understand the question first:
+
+So basically if given an array of [2,3,4,5]
+
+The calculation will be [3x4x5, 2x4x5, 2x3x5, 2x3x4]
+
+answer[0] = 3 × 4 × 5 = 60
+answer[1] = 2 × 4 × 5 = 40
+answer[2] = 2 × 3 × 5 = 30
+answer[3] = 2 × 3 × 4 = 24
+
+So the output will be [60, 40, 30, 24]
+
+Now a key concept to solve the problem is:
+
+Total product except nums[i] = product of all elements before i × product of all elements after i
+
+If we think about it, use num[0] as an example:
+The product of all elements before index 0 is 1 (since there are no elements before it).
+The product of all elements after index 0 is 3 × 4 × 5 = 60.
+So answer[0] = 1 × 60 = 60.
+And so on for the other indices.
+
+So the question now becomes how do we use codes to calculate the product of all elements before and after each index?
+
+
+nums = [2, 3, 4, 5]
+
+
+Prefix products:
+
+prefix = 1
+for i in range(n):
+    answer[i] = prefix        # step 1:assign product so far
+    prefix *= nums[i]         # step 2:update prefix for next step
+
+The key is to assign answer[i] = prefix before updating prefix, 
+so that answer[i] contains the product of all elements before index i.
+
+i = 0 → answer[0] = 1 (no numbers before), prefix = 1×2 = 2
+
+i = 1 → answer[1] = 2, prefix = 2×3 = 6
+
+i = 2 → answer[2] = 6, prefix = 6×4 = 24
+
+i = 3 → answer[3] = 24, prefix = 24×5 = 120
+
+Suffix products:
+
+suffix = 1
+for i in range(n - 1, -1, -1):
+    answer[i] *= suffix      # multiply by suffix so far
+    suffix *= nums[i]        # update suffix for next step
+
+i = 3 →  suffix = 1×5 = 5, answer[3] = 24 × 1 = 24
+
+i = 2 → suffix = 5×4 = 20, answer[2] = 6 × 5 = 30
+
+i = 1 → suffix = 20×3 = 60, answer[1] = 2 × 20 = 40
+
+i = 0 → suffix = 60×2 = 120, answer[0] = 1 × 60 = 60
+
+answer = [60, 40, 30, 24]
+
+
+Now, another key insight is that why answer[i] = prefix doesn't include nums[i]?
+
+Because  we are always "one step behind"
+
+Let’s walk through an example with nums = [2, 3, 4, 5]:
+
+prefix = 1
+answer = [1, 1, 1, 1]
+
+for i in range(n):
+    answer[i] = prefix
+    prefix *= nums[i]
+
+'''
+
+
+
+
+
+
+'''
 Code Explanation:
 
 answer = [1] * n # This will create a list with n elements, all initialized to 1.
