@@ -14,6 +14,8 @@ Output: 9
 
 '''
 
+#This question is hard
+
 #Prefix/Suffix Arrays
 class Solution:
     def trap(self, height: list[int]) -> int:
@@ -35,7 +37,7 @@ class Solution:
             water += max(0, pot - height[i])
 
         return water
-    
+
 #Two Pointers
 class Solution:
     def trap(self, height: list[int]) -> int:
