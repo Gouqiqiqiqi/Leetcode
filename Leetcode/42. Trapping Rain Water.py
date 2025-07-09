@@ -73,7 +73,38 @@ So the total water trapped is 6.
 
 '''
 
+'''
+A note to myself, i made this mistake in the first attempt:
 
+I used 
+
+max_left = max_right = [0] * n 
+
+instead of
+
+max_left = [0] * n
+max_right = [0] * n
+
+
+This leads to failure.
+
+The reason is because this line creates a single list in memory and assigns it to both max_left and max_right. 
+So any change I make to one will affect the other, because they are references to the same object.
+
+
+Example of the problem:
+a = b = [0] * 3
+a[0] = 5
+print(b)  # Output: [5, 0, 0]  — b is changed too!
+
+
+
+In contrast:
+max_left = [0] * n
+max_right = [0] * n
+This creates two separate lists, which is what I want.
+One to store the max height to the left of each bar, and one to store the max height to the right.
+'''
 
 
 
