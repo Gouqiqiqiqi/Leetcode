@@ -14,12 +14,13 @@ Output: 9
 
 '''
 
-#This question is hard
+#This question is hard, prefix_suffix method is eaiser to understand, but two pointers is more efficient.
 
 #Prefix/Suffix Arrays
 class Solution:
     def trap(self, height: list[int]) -> int:
-        left_wall = right_wall = 0
+        left_wall = 0
+        right_wall = 0
         n = len(height)
         max_left = [0] * n
         max_right = [0] * n
@@ -37,6 +38,44 @@ class Solution:
             water += max(0, pot - height[i])
 
         return water
+
+'''
+The logic for the prefix/suffix method is as follows:
+for a given array of heights, we need to find the maximum height to the left and right of each bar.
+We can do this by creating two arrays, max_left and max_right, where:
+- max_left[i] is the maximum height to the left of index i (including index i itself)
+- max_right[i] is the maximum height to the right of index i (including index i itself)
+
+The trick to solve this problem is to realize that the amount of water that can be trapped above each bar 
+is determined by the minimum of the maximum heights to its left and right at that bar (i), 
+minus the height of the bar itself.
+
+
+For example,
+
+given the height array [0,1,0,2,1,0,1,3,2,1,2,1], 
+
+max_left would be:
+[0, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3]
+max_right would be:
+[3, 3, 3, 3, 3, 3, 2, 2, 1, 1, 1, 1]
+
+min(max_left[i], max_right[i]) is 
+[0, 1, 1, 2, 2, 2, 2, 3, 2, 1, 1, 1],
+which gives us the potential water level above each bar.
+
+Then for each index i, the water trapped above that bar is:
+
+max(0, min(max_left[i], max_right[i]) - height[i]) is 
+[0, 0, 1, 0, 1, 2, 1, 0, 0, 0, 1, 0]
+
+So the total water trapped is 6.
+
+'''
+
+
+
+
 
 #Two Pointers
 class Solution:
@@ -60,5 +99,3 @@ class Solution:
 
         return water
 
-
-#should i push this ?
