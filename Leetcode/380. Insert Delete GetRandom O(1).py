@@ -1,5 +1,5 @@
 '''
-Question: 380. Insert Delete GetRandom O(1)
+Question 380: Insert Delete GetRandom O(1)
 
 Implement the RandomizedSet class:
 

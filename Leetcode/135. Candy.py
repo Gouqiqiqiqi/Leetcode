@@ -1,5 +1,5 @@
 '''
-Question: 135. Candy
+Question 135: Candy
 
 There are n children standing in a line. Each child is assigned a rating value given in the integer array ratings.
 

@@ -1,6 +1,6 @@
 '''
-Question:
-88. Merge Sorted Array
+Question 88: Merge Sorted Array
+
 Two integer arrays nums1 and nums2 are given, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
 Merge nums1 and nums2 into a single array sorted in non-decreasing order.
 The final sorted array should not be returned by the function, but instead be stored inside the array nums1. 
