@@ -59,3 +59,6 @@ class Solution:
                 water += right_max - height[right]
 
         return water
+
+
+#should i push this ?
