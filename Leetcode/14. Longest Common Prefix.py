@@ -24,9 +24,8 @@ class Solution:
             for word in strs[1:]:       # Loop through all the other words (from 2nd to last)
                 if i >= len(word) or word[i] != char:
                     return strs[0][:i]  # If mismatch found, return prefix up to index i
-                
-        return strs[0]
-    
+
+        return strs[0]  # If no mismatch found, return the entire first string, i.e. the longest common prefix is the first string itself
 
 '''
 Note:
