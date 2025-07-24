@@ -25,3 +25,43 @@ class Solution:
         word.reverse()
 
         return ' '.join(word) # Remember to join the words with a single space
+    
+
+'''
+Original string s	'the sky is blue'
+After s.split()	['the', 'sky', 'is', 'blue']
+After .reverse()	['blue', 'is', 'sky', 'the']
+After ' '.join()	'blue is sky the'
+'''
+
+
+'''
+Some additional notes:
+
+.reverse() modifies the list in place, reversing the order of the elements.
+
+i.e. word = ['the', 'sky', 'is', 'blue']
+     word.reverse()
+     # Now word is ['blue', 'is', 'sky', 'the']
+
+
+why s.split.reverse() will not work?
+You're trying to chain two method calls:
+
+s.split() → gives you ['the', 'sky', 'is', 'blue']
+
+.reverse() → modifies that list in-place and returns None
+
+So the whole expression becomes:
+s.split().reverse()  # → None
+
+# This is because reverse() modifies the list in place and returns None.
+# So you end up with:
+# s.split().reverse()  # → None
+
+
+🔍 Why you can't do s.split().reverse()
+Because .reverse() does not return the reversed list — it just returns None.
+Therefore you need a variable word to hold the result of s.split() before calling .reverse().
+
+'''
