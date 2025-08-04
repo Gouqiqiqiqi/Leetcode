@@ -97,4 +97,26 @@ If we join all rows:
 
 
 ''.join(rows) → 'HOELL'
+
+
+In this line:
+
+rows[current_row] += char
+you are appending the character char to the string already stored in rows[current_row].
+
+🔄 What happens under the hood?
+If you had:
+
+
+rows = ['', '', '']
+and you did this:
+
+rows[0] += 'A'  # rows[0] was '', now becomes 'A'
+rows[0] += 'B'  # rows[0] was 'A', now becomes 'AB'
+rows[0] += 'C'  # rows[0] was 'AB', now becomes 'ABC'
+Now rows would be:
+
+
+['ABC', '', '']
+So yes — each time you do rows[current_row] += char, it appends the new character to the existing string in that row.
 '''
