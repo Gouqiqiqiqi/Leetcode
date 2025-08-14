@@ -14,7 +14,7 @@ class Solution:
         # Initialize the minimum price to a very high value and maximum profit to 0
         if not prices:
             return 0
-        min_price = price[0] # This set min_price to positive infinity
+        min_price = prices[0] # This set min_price to positive infinity
         # This is done to ensure that any price in the list will be less than this initial value.
         max_profit = 0
 
