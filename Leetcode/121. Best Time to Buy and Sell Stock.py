@@ -38,19 +38,16 @@ The logic to solve the problem is as follows:
 
 '''
 #min(x, y):
-The function min(x, y) is a built-in Python function that simply returns the smaller of the two values x and y.
+The function min(x, y) is a built-in Python function that simply returns the smaller of 
+the two values x and y.
 i.e.
 min(3, 5)  # returns 3
-min(10, 2) # returns 2
-min(-1, -5) # returns -5
+
 
 #max(x, y):
 The function max(x, y) is a built-in Python function that returns the larger of the two values x and y.
 i.e.
 max(3, 5)  # returns 5
-max(10, 2) # returns 10
-max(-1, -5) # returns -1
-
 '''
 
 '''
@@ -75,9 +72,6 @@ Current i	Previous max_profit	Current min_price	New max_profit = max(max_profit,
 4	        5	                1	                max(5, 4 - 1) → 5
 
 '''
-
-
-
 
 '''
 if not some_value:
