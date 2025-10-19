@@ -50,3 +50,47 @@ Output:
 ]
 
 '''
+
+class Solution:
+    def fullJustify(self, words: list[str], maxWidth: int) -> list[str]:
+        result = []
+        i = 0
+        
+        while i < len(words):
+            # Step 1: Pack words for current line
+            line_words = [words[i]]
+            line_length = len(words[i])
+            i += 1
+            
+            # Add as many words as possible to current line
+            while i < len(words) and line_length + 1 + len(words[i]) <= maxWidth:
+                line_words.append(words[i])
+                line_length += 1 + len(words[i])  # +1 for minimum space
+                i += 1
+            
+            # Step 2: Format the line (inline)
+            num_words = len(line_words)
+            
+            # Last line or single word - left justify
+            if i == len(words) or num_words == 1:
+                line = ' '.join(line_words)
+                line += ' ' * (maxWidth - len(line))
+            else:
+                # Full justify - distribute spaces evenly
+                total_chars = sum(len(word) for word in line_words)
+                total_spaces = maxWidth - total_chars
+                gaps = num_words - 1
+                
+                spaces_per_gap = total_spaces // gaps
+                extra_spaces = total_spaces % gaps
+                
+                line = ''
+                for j, word in enumerate(line_words):
+                    line += word
+                    if j < gaps:
+                        # Add base spaces + 1 extra for first 'extra_spaces' gaps
+                        line += ' ' * (spaces_per_gap + (1 if j < extra_spaces else 0))
+            
+            result.append(line)
+        
+        return result
