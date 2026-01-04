@@ -1,0 +1,16 @@
+Let's begin with a web app.
+
+The world is moving in 1.Async 2.Microservice directions.
+
+Let's assume the web app is hosted on a single server.
+
+The web app has the following components:
+(There are many options for each component, each for differnt applications. 
+I would like to use the tech stack that target async operations and microservices architecture.)
+1. Frontend language(TypeScript (typed JavaScript))
+2. Frontend framework (React--Meta, Angular--Google)
+3. Backend language (Python, TypeScript (typed JavaScript))
+4. Backend framework (FastAPI (Python), NestJS (Node.js))
+5. Web server (Nginx--Standard baseline, Custom servers for big techs)
+6. Database (PostgreSQL--Best for async)
+7. Caching layer (Redis--Standard baseline)
