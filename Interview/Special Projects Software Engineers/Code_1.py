@@ -80,6 +80,4 @@ with DAG('etl_pipeline', start_date=datetime(2023, 1, 1), schedule_interval='@da
 '''
 Airflow = Apache Airflow is an open-source platform to programmatically author, 
 schedule, and monitor workflows. It allows you to define complex data pipelines as code and manage their execution.
-
-
 '''
