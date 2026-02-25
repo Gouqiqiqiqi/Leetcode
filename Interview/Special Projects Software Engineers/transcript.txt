@@ -1,0 +1,310 @@
+Hello and welcome to the code review interview.
+
+In this interview, we will discuss real code snippets, analyze them together, and explore how you reason about code.
+
+Before we get to the code section, I will start by asking a few questions about your background and experience to get a sense of your expertise.
+
+If you would like to take the interview at another time, please use the End Call button at the bottom of your screen to exit.
+
+Otherwise, are you ready to begin?
+
+Great, thanks for confirming.
+
+Before we start with the coding questions, are there any particular areas you would like the code review to focus on today?
+
+For example, backend, frontend, data engineering, or general system design?
+
+Thanks for letting me know.
+
+Could you please share your screen now and let me know once you have done so?
+
+We can then move on to discussing your coding background.
+
+Thank you for sharing your screen.
+
+Let's start by discussing your coding background.
+
+Can you describe your main areas of expertise and highlight some of the backend, data engineering, or system design projects you have worked on?
+
+Please include the problems you solved, the technologies you used, and your specific role in those projects.
+
+Thank you for sharing that overview.
+
+You mentioned collaborating with Oxford University and third party companies to deliver clean data, as well as experience building data pipelines and handling data cleansing with Python and SQL on Azure.
+
+Can you walk me through a specific example of a data pipeline you designed or managed?
+
+Please describe the data flow, any challenges you faced, and the solutions you implemented to handle those challenges.
+
+Thank you for confirming that your screen is shared.
+
+We are now moving on to the code review portion of the interview.
+
+Are you ready to begin with problem one?
+
+You should now see the first code snippet on your interview screen.
+
+Please take your time to read through and understand the code.
+
+Let me know when you are ready to start discussing it and share your initial thoughts on what this code is intended to do.
+
+Got it.
+
+You mentioned the code defines an ETL pipeline using Apache Airflow and connects to a SQL database.
+
+Can you walk me through what each of the three main functions, extract, transform, and load, are doing in this pipeline?
+
+Please describe the purpose of each step and how data flows between them.
+
+Thank you for starting to explain.
+
+Please continue walking me through what each step does in this pipeline, starting with the extract function, then transform, and finally load.
+
+Let me know what you think is happening in each, and how data moves from one to the next.
+
+Thank you for explaining the overall flow.
+
+Now looking closer at the transform function, how confident are you that the data is being processed as intended, particularly considering how the select statement is returning data?
+
+What kind of structure do you think the variable data has at this point, and how does that affect the result of d.
+
+upper for each element?
+
+Thank you for confirming and for your detailed responses.
+
+Now, considering how cursor dot fetchall returns a list of tuples, what do you expect will happen in the transform function when it does d dot upper for each d in data?
+
+Do you see any issues with how the code processes that structure?
+
+Thank you for your answer.
+
+Given that each element in data is a tuple, what do you think would happen if you tried to call upper directly on the tuple?
+
+How might you adjust the code so that only the string data values are transformed to uppercase, while preserving the associated IDs for loading later?
+
+I can see your screen clearly.
+
+Picking up from where you left off, you mentioned using a dictionary.
+
+How would you modify the transform logic so that each tuple’s string value gets uppercased but its ID is preserved?
+
+What would your processed data structure look like before passing it to the load step?
+
+You do not need to write out the code unless you want to.
+
+You can simply explain your approach verbally.
+
+For example, describe how you would change the transform function so that it produces a data structure where each ID is linked to its uppercased data value.
+
+What format would you use to make this clear for the next step, and how would you pass it along to the load function?
+
+Yes, that makes sense.
+
+You could create a processed list where each element is a tuple or dictionary containing the ID and the uppercased data value, for example as pairs like open parenthesis d zero comma d one dot upper close parenthesis for each d in data.
+
+Now, after transforming the data this way, how would you pass your processed results from the transform function to the load function in this Airflow pipeline?
+
+What mechanism ensures the load step receives the transformed output?
+
+Thanks for walking through that.
+
+Let’s move on to the next one.
+
+The next code snippet will take a moment to load, so please be patient.
+
+When it appears, let me know that you can see the code.
+
+Remember, it will show up on the interview screen and not in a separate code editor.
+
+If the snippet is not there immediately, there is no rush.
+
+Once you have the code, take a few moments to read it silently.
+
+Whenever you are ready, let me know and we can begin discussing your thoughts.
+
+Thank you for describing the purpose of this code.
+
+Now that you have had a chance to look it over, can you walk me through how the fetch_data function operates?
+
+Specifically, what are the key steps it follows to retrieve and process the JSON response from each URL?
+
+Thank you for that explanation.
+
+Let’s look at how fetch_data and process_urls handle async requests and JSON parsing.
+
+Are there any potential problems or missed steps you notice in the fetch_data function, especially in the use of async client and the JSON response handling?
+
+How would you test this code to confirm it behaves as intended?
+
+Thank you for pointing out those issues.
+
+Let’s focus on error handling for both the HTTP request and the JSON parsing step.
+
+If you were to refactor the fetch_data function to make it more robust, what specific changes or safeguards would you add?
+
+How would you ensure that both HTTP errors and malformed JSON responses are properly handled without crashing the program?
+
+Thank you for explaining your approach to making the function safer and more robust.
+
+Now, thinking about the process_urls function, after gathering all the results from each fetch task, are there any edge cases or data inconsistencies you would watch out for during the filtering and flattening of items?
+
+How would you ensure that process_urls always returns a clean, predictable list, even if one of the URLs fails or returns an unexpected structure?
+
+Understood.
+
+Guaranteeing that process_urls always returns a consistent list of validated dictionary items is a solid approach.
+
+Thank you for reasoning through those edge cases and cleanup strategies.
+
+Let’s go a little deeper.
+
+Focusing on the async execution, what would you recommend for monitoring or logging to help diagnose network delay, slow endpoints, or repeated failures across multiple URLs?
+
+What sort of metrics or logs would you want to capture in a production system to improve reliability and maintainability?
+
+Thank you for outlining those logging and monitoring strategies, including tracking request IDs, latency, retries, success and failure counts, and schema validation results.
+
+Those metrics definitely help with diagnosing problems and keeping the system reliable.
+
+Let’s shift focus back to the code.
+
+Looking specifically at the main execution section at the bottom of the script, is there anything about the way it triggers the async tasks that could be improved for clarity or technical correctness?
+
+How would you structure the main block for a more robust or production-ready script?
+
+Thank you for breaking down those improvements for a production main block, such as using an explicit async main, adding logging and proper error handling, and making configuration flexible.
+
+Let’s move on to problem three.
+
+The next code snippet may take a few moments to load, so please let me know once you can see it on your interview screen and are ready to continue.
+
+Take your time to read through the code silently and let me know when you are ready to start discussing it.
+
+Thank you for your summary of the FastAPI service and the SQLModel setup.
+
+Now, let’s look more closely at the Item model and the two endpoints.
+
+What potential issues or pitfalls do you see with how the tags field is defined and used?
+
+Are there any consequences for using a default mutable value like an empty list at the class level, and how would you address it?
+
+Thank you for highlighting the two main pitfalls: the issues caused by mutable default values for tags, and the lack of explicit serialization and column configuration for lists in SQLModel and SQLite.
+
+If you were to redesign the tags storage for reliability and clarity in both model definition and endpoint handling, what would your recommended implementation look like?
+
+How would you handle validation and serialization when reading and writing tags?
+
+Thank you for your answer and for noting the benefits of normalizing tags into a dedicated table for better reliability and query performance.
+
+Let’s dive a little deeper.
+
+How would you design the FastAPI endpoints and their related Pydantic models to interact cleanly with this normalized tags structure?
+
+What sort of schema or response format would you expose through the API for both creating new items and retrieving existing ones along with their tags?
+
+Yes, making tags first-class for search and filtering is an important benefit of normalization.
+
+To finish our discussion, could you describe how you would implement efficient tag-based filtering in your endpoints?
+
+For example, how would your API design and database schema allow a client to request all items having a particular tag, and how would you ensure good performance as data volume grows?
+
+Thank you for bringing up the importance of proper indexing, including index usage for large datasets.
+
+That’s crucial for efficient tag-based filtering at scale.
+
+To wrap up: when exposing tag queries and filtered results through your FastAPI endpoints, how would you handle pagination and ordering to make the API results usable for frontend or external consumers?
+
+Thank you for outlining your approach to pagination and ordering, including the use of indexed columns, stable cursors, and including metadata in your response.
+
+These strategies would make the API responses predictable and frontend-friendly while maintaining performance.
+
+We are nearly out of time, so I will pause here.
+
+Thank you for walking through these problems and sharing your reasoning across a range of backend and data engineering topics.
+
+If you have any questions about the process, now would be the time to ask.
+
+Otherwise, the interview is complete and you can leave by pressing the end call button.
+
+
+Questions:
+
+Question 1---------------------------------------------------------------------------------
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+from airflow.hooks.postgres_hook import PostgresHook
+from airflow.providers.microsoft.azure.hooks.wasb import WasbHook
+from datetime import datetime
+
+def extract(**kwargs):
+    pg = PostgresHook(postgres_conn_id='postgres_local')  # fetch raw records for the execution date
+    conn = pg.get_conn()
+    cursor = conn.cursor()
+    cursor.execute('SELECT id, data FROM raw_table WHERE date = %s', kwargs['ds'])
+    kwargs['ti'].xcom_push(key='raw', value=cursor.fetchall())
+
+def transform(**kwargs):
+    data = kwargs['ti'].xcom_pull(task_ids='extract', key='raw')
+    processed = [d.upper() for d in data]  # supposed to uppercase the data
+
+def load(**kwargs):
+    container = WasbHook(wasb_conn_id='azure_blob').get_conn()  # upload transformed data to Azure Blob
+    blob_client = container.get_blob_client('data', 'processed.json')
+    blob_client.upload_blob(processed)
+
+with DAG('etl_pipeline', start_date=datetime(2023, 1, 1), schedule_interval='@daily') as dag:
+    extract = PythonOperator(task_id='extract', python_callable=extract)
+    transform = PythonOperator(task_id='transform', python_callable=transform)
+    load = PythonOperator(task_id='load', python_callable=load)
+    extract >> transform >> load
+
+Question 2---------------------------------------------------------------------------------
+
+import aiohttp
+import asyncio
+
+# fetch JSON items from a URL
+async def fetch_data(session, url):
+    resp = session.get(url)
+    data = await resp.json
+    return data.get("items", [])
+
+# process multiple URLs and filter by threshold
+async def process_urls(urls, threshold):
+    async with aiohttp.ClientSession() as session:
+        tasks = [fetch_data(session, url) for url in urls]
+        results = await asyncio.gather(*tasks)
+    filtered = [item for batch in results for item in batch if item["value"] > threshold]
+    return filtered
+
+if __name__ == "__main__":
+    urls = ["https://api.example.com/data1", "https://api.example.com/data2"]
+    data = asyncio.run(process_urls(urls, 10))
+    print("Filtered items:", data)
+
+Question 3---------------------------------------------------------------------------------
+
+from fastapi import FastAPI, HTTPException
+from sqlmodel import SQLModel, Field, create_engine, Session
+
+app = FastAPI()
+engine = create_engine("sqlite:///./test.db")
+SQLModel.metadata.create_all(engine)
+
+class Item(SQLModel, table=True):  # data model for items
+    id: int = Field(default=None, primary_key=True)
+    name: str
+    tags: list[str] = []
+
+@app.post("/items/")  # create a new item
+def create_item(name: str, tags: list[str] = []):
+    item = Item(name=name, tags=tags)
+    with Session(engine) as session:
+        session.add(item); session.commit(); session.refresh(item)
+    return item
+
+@app.get("/items/{item_id}")  # retrieve an item by ID
+def read_item(item_id: int):
+    item = Session(engine).get(Item, item_id)
+    if not item: raise HTTPException(404, "Not found")
+    return item
