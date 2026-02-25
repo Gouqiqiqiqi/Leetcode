@@ -6,19 +6,19 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 
 
-def extract() -> dict[str, int]:
+def extract(**kwargs) -> None:
     records = [3, 7, 1, 9, 4]
-    return {"count": len(records), "sum": sum(records)}
+    kwargs['ti'].xcom_push(key='raw', value={"count": len(records), "sum": sum(records)})
 
 
-def transform(ti) -> dict[str, float]:
-    extracted = ti.xcom_pull(task_ids="extract")
+def transform(**kwargs) -> None:
+    extracted = kwargs['ti'].xcom_pull(task_ids='extract', key='raw')
     average = extracted["sum"] / extracted["count"]
-    return {"average": average}
+    kwargs['ti'].xcom_push(key='processed', value={"average": average})
 
 
-def load(ti) -> None:
-    transformed = ti.xcom_pull(task_ids="transform")
+def load(**kwargs) -> None:
+    transformed = kwargs['ti'].xcom_pull(task_ids='transform', key='processed')
     print(f"Loaded metric -> average={transformed['average']:.2f}")
 
 

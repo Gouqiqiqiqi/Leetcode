@@ -70,7 +70,9 @@ def load(**kwargs):
     blob_client = container.get_blob_client('data', 'processed.json')
     blob_client.upload_blob(processed)
 
-with DAG('etl_pipeline', start_date=datetime(2023, 1, 1), schedule_interval='@daily') as dag:
+with DAG('etl_pipeline', 
+         start_date=datetime(2023, 1, 1), 
+         schedule_interval='@daily') as dag:
     extract = PythonOperator(task_id='extract', python_callable=extract)
     transform = PythonOperator(task_id='transform', python_callable=transform)
     load = PythonOperator(task_id='load', python_callable=load)
