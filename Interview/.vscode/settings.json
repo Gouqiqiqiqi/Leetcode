@@ -1,7 +1,0 @@
-{
-  "python-envs.pythonProjects": [],
-  "python.condaPath": "C:\\Users\\huang\\miniforge3\\condabin\\conda.bat",
-  "python.defaultInterpreterPath": "C:\\Users\\huang\\miniforge3\\envs\\py314\\python.exe",
-  "python-envs.defaultEnvManager": "ms-python.python:conda",
-  "python-envs.defaultPackageManager": "ms-python.python:conda"
-}
